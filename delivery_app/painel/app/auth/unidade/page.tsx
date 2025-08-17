@@ -12,21 +12,24 @@ interface Tenant {
     id: number;
     slug: string;
     estabelecimento_nome: string;
-}
-
-const EscolherTenant = () => {
+  }
+  
+  interface TenantResponse {
+    tenants: Tenant[];
+  }
+  
+  const EscolherTenant = () => {
     const [tenants, setTenants] = useState<Tenant[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
     const router = useRouter();
-
+  
     const fetchTenants = async () => {
-        try {
-            const response = await axios.get(
-                `${process.env.NEXT_PUBLIC_API_URL}/auth/get_tenant`,
-                { withCredentials: true }
-            );
-
+      try {
+        const response = await axios.get<TenantResponse>(
+          `${process.env.NEXT_PUBLIC_API_URL}/auth/get_tenant`,
+          { withCredentials: true }
+        );
             const tenantsList = response.data.tenants;
             if (tenantsList && tenantsList.length > 0) {
                 setTenants(tenantsList);

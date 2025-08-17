@@ -1,8 +1,9 @@
 # 1) base: sistema e libs necessárias
-FROM node:20-alpine AS base
+FROM node:20-bullseye AS base
 
-# Adiciona compatibilidade e certificados SSL
-RUN apk add --no-cache libc6-compat ca-certificates
+# Instala certificados e ferramentas básicas
+RUN apt-get update && apt-get install -y ca-certificates curl git && rm -rf /var/lib/apt/lists/*
+
 
 WORKDIR /app
 

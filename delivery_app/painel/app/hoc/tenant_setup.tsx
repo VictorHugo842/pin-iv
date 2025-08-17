@@ -3,10 +3,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
-import { getCookie } from '../utils/cookies'; // Certifique-se de importar a função `getCookie`
+import { getCookie } from '../utils/cookies';
 
-const withTenantSetup = (WrappedComponent: React.ComponentType<any>) => {
-    const TenantSetupComponent = (props: any) => {
+interface SetupStatusResponse {
+    setup_completo: boolean;
+}
+
+const withTenantSetup = <P extends object>(WrappedComponent: React.ComponentType<P>) => {
+    const TenantSetupComponent: React.FC<P> = (props) => {
         const router = useRouter();
         const [showModal, setShowModal] = useState(false);
         const [isLoading, setIsLoading] = useState(true);
@@ -14,7 +18,6 @@ const withTenantSetup = (WrappedComponent: React.ComponentType<any>) => {
         useEffect(() => {
             const checkTenantSetup = async () => {
                 try {
-                    // Recupera o token CSRF usando a função getCookie
                     const csrfToken = getCookie('csrf_access_token');
 
                     if (!csrfToken) {
@@ -22,18 +25,14 @@ const withTenantSetup = (WrappedComponent: React.ComponentType<any>) => {
                         return;
                     }
 
-                    // Envia a requisição GET para verificar o status do setup
-                    const response = await axios.get(
+                    const response = await axios.get<SetupStatusResponse>(
                         `${process.env.NEXT_PUBLIC_API_URL}/auth/check_setup_status`,
                         {
-                            withCredentials: true, // Envia cookies de autenticação
-                            headers: {
-                                'X-CSRF-Token': csrfToken || '', // Envia o token CSRF no cabeçalho
-                            },
+                            withCredentials: true,
+                            headers: { 'X-CSRF-Token': csrfToken || '' },
                         }
                     );
 
-                    // Se o setup não estiver completo, exibe o modal
                     if (!response.data.setup_completo) {
                         setShowModal(true);
                     }
@@ -52,38 +51,31 @@ const withTenantSetup = (WrappedComponent: React.ComponentType<any>) => {
         const handleCompleteSetup = async () => {
             try {
                 const csrfToken = getCookie('csrf_access_token');
-
                 if (!csrfToken) {
                     console.error('CSRF token não encontrado');
                     return;
                 }
 
-                // Enviar a requisição para completar o setup (POST)
                 await axios.post(
                     `${process.env.NEXT_PUBLIC_API_URL}/api/tenant/setup`,
+                    {},
                     {
-                        // Dados de configuração aqui, se necessário
-                    },
-                    {
-                        withCredentials: true, // Envia cookies de autenticação
-                        headers: {
-                            'X-CSRF-Token': csrfToken || '',
-                        },
+                        withCredentials: true,
+                        headers: { 'X-CSRF-Token': csrfToken || '' },
                     }
                 );
-                setShowModal(false); // Fecha o modal após completar o setup
+                setShowModal(false);
             } catch (error) {
                 console.error('Erro ao completar o setup:', error);
             }
         };
 
-        if (isLoading) return <div>Loading...</div>; // Loader enquanto a verificação está em andamento
+        if (isLoading) return <div>Loading...</div>;
 
         return (
             <>
                 <WrappedComponent {...props} />
 
-                {/* Modal de Setup Obrigatório */}
                 {showModal && (
                     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
                         <div className="bg-white p-8 rounded-lg shadow-lg w-96">

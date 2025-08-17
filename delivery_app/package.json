@@ -9,6 +9,7 @@
     "typescript-eslint": "^8.30.1"
   },
   "dependencies": {
+    "@shadcn/ui": "^0.0.4",
     "axios": "^1.8.4"
   }
 }
