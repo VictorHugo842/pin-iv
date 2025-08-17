@@ -256,9 +256,9 @@ export default function PaginaRegistro() {
                             <div key={stepNumber} className="flex items-center">
                                 <div
                                     className={`w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300 shadow-md ${step >= stepNumber
-                                            ? // Suavizando gradiente dos steps e reduzindo escala
-                                            "bg-gradient-to-br from-red-400 to-orange-400 text-white transform scale-105"
-                                            : "bg-white text-gray-400 border-2 border-gray-200"
+                                        ? // Suavizando gradiente dos steps e reduzindo escala
+                                        "bg-gradient-to-br from-red-400 to-orange-400 text-white transform scale-105"
+                                        : "bg-white text-gray-400 border-2 border-gray-200"
                                         }`}
                                 >
                                     {step > stepNumber ? "✓" : stepNumber}
@@ -266,9 +266,9 @@ export default function PaginaRegistro() {
                                 {stepNumber < 3 && (
                                     <div
                                         className={`w-16 h-2 mx-2 rounded-full transition-all duration-300 ${step > stepNumber
-                                                ? // Suavizando gradiente da barra de progresso
-                                                "bg-gradient-to-r from-red-300 to-orange-300"
-                                                : "bg-gray-200"
+                                            ? // Suavizando gradiente da barra de progresso
+                                            "bg-gradient-to-r from-red-300 to-orange-300"
+                                            : "bg-gray-200"
                                             }`}
                                     ></div>
                                 )}

@@ -110,7 +110,7 @@ const PaginaLogin = () => {
             </div>
             <div className="text-sm text-gray-600">
               Não tem conta?
-              <a href="/registro" className="ml-1 text-gray-600 hover:text-gray-800 font-medium">
+              <a href="/auth/registro" className="ml-1 text-gray-600 hover:text-gray-800 font-medium">
                 Cadastre-se
               </a>
             </div>
@@ -287,7 +287,7 @@ const PaginaLogin = () => {
                   </a>
                   <div className="text-sm text-gray-600">
                     Não tem uma conta?{" "}
-                    <a href="/registro" className="text-gray-600 hover:text-gray-800 font-medium">
+                    <a href="/auth/registro" className="text-gray-600 hover:text-gray-800 font-medium">
                       Cadastre-se gratuitamente
                     </a>
                   </div>
