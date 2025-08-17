@@ -43,7 +43,7 @@ def delivery():
     estabelecimento_id = g.estabelecimento_id  
 
     # Verificar se os dados já estão no cache do Redis
-    cache_key = f"delivery_data:{user_id}:{tenant_id}"
+    cache_key = f"delivery_data:{user_id}:{tenant_id}:{estabelecimento_id}"
     cached_data = redis.get(cache_key)
 
     if cached_data:
@@ -75,12 +75,12 @@ def delivery():
 
     # Preparar os dados a serem retornados
     data = {
-        "message": "Dados do Estabelecimento e cliente",
+        "message": "Dados do Estabelecimento e Cliente",
         "store": estabelecimento.nome,
         "store_type": estabelecimento.tipo_estabelecimento,
         "client_name": usuario.nome,
         "client_email": usuario.email,
-        "tenant_id": str(tenant_id)  # Garantir string
+        "tenant_id": str(tenant_id)
     }
 
     # Armazenar os dados no cache do Redis com expiração de 1 hora

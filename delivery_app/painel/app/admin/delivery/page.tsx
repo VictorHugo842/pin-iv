@@ -24,10 +24,19 @@ const Delivery = () => {
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
+  interface DeliveryData {
+    message: string;
+    store: string;
+    store_type: string;
+    client_name: string;
+    client_email: string;
+    tenant_id: string;
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
+        const response = await axios.get<DeliveryData>(
           `${process.env.NEXT_PUBLIC_API_URL}/painel/delivery`,
           { withCredentials: true }
         );

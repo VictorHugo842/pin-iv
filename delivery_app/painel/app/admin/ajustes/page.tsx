@@ -21,15 +21,24 @@ const Ajustes = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
 
+    interface AjustesData {
+        message: string;
+        store: string;
+        store_type: string;
+        client_name: string;
+        client_email: string;
+        tenant_id: string;
+      }
+
     // Busca os dados do Estabelecimento
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(
-                    `${process.env.NEXT_PUBLIC_API_URL}/painel/delivery`,
-                    { withCredentials: true }
+                const response = await axios.get<AjustesData>(
+                  `${process.env.NEXT_PUBLIC_API_URL}/painel/delivery`,
+                  { withCredentials: true }
                 );
-
+          
                 setData(response.data);
             } catch (err: any) {
                 const errorMessage = err.response?.data?.msg || err.message;
