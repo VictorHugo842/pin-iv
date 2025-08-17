@@ -1,0 +1,15 @@
+Flask
+Werkzeug
+Flask-Cors
+Flask-SQLAlchemy
+flask_bcrypt
+pymysql
+flask_jwt_extended
+SQLAlchemy
+python-dotenv
+gunicorn
+axios
+Flask-Migrate
+python-slugify
+Flask-Limiter
+redis

@@ -1,0 +1,116 @@
+# Iniciar o shell do Flask (útil para testar comandos dentro do contexto do Flask)
+flask shell
+
+# Atualizar o sistema e instalar o cliente MariaDB
+apt update
+apt install mariadb-client
+apt install mysql-client
+
+# Conectar ao MariaDB ou MySQL
+mysql -u root -p
+
+# Acessar o container do MariaDB com Docker
+docker exec -it db-compose bash
+mariadb -u root -p
+
+# Comandos SQL para verificar o banco de dados e as tabelas
+SHOW DATABASES;
+USE dbdelivery;
+SHOW TABLES;
+
+# Selecionar todos os registros da tabela 'stores'
+SELECT * FROM stores;
+
+# Inserir um novo registro na tabela 'stores'
+INSERT INTO stores (name, slug, tenant_id)
+VALUES ('Loja Exemplo', 'loja-exemplo', 1);
+
+# Conectar ao MySQL/MariaDB externamente (fora do container)
+mysql -h 127.0.0.1 -P 3306 -u root -p
+
+# Comandos do Flask para gerenciar migrações do banco de dados
+flask db init  # Inicializa o diretório de migrações
+flask db migrate -m "Initial migration"  # Cria a migração inicial
+flask db upgrade  # Aplica as migrações ao banco de dados
+
+# Criar novas migrações (exemplo para adicionar um campo 'created_at' à tabela 'store')
+flask db migrate -m "add created_at to store"  # Cria a migração
+flask db upgrade  # Aplica a migração
+
+# Apagar o banco de dados e reiniciar os containers
+docker-compose down -v  # Remove containers e volumes
+docker-compose up --build  # Recria e sobe os containers novamente
+
+# Remover uma rede específica do Docker (caso seja necessário)
+docker network rm mynetwork
+
+# Subir os containers novamente com Docker Compose
+docker-compose up --build
+
+# Verificar todos os containers (em execução ou não)
+docker ps -a
+
+# Comandos gerais de Docker para gerenciar containers e volumes:
+
+# 1. Verificar containers em execução:
+docker ps
+
+# 2. Verificar todos os containers (em execução ou não):
+docker ps -a
+
+# 3. Parar todos os containers:
+docker stop $(docker ps -q)
+
+# 4. Remover todos os containers:
+docker rm $(docker ps -a -q)
+
+# 5. Parar um container específico:
+docker stop <container_name_or_id>
+
+# 6. Remover um container específico:
+docker rm <container_name_or_id>
+
+# 7. Limpar imagens não utilizadas:
+docker image prune -a
+
+# 8. Reiniciar um container:
+docker restart <container_name_or_id>
+
+# 9. Verificar logs de um container:
+docker logs <container_name_or_id>
+
+# 10. Verificar logs em tempo real:
+docker logs -f <container_name_or_id>
+
+# 11. Verificar a rede do Docker:
+docker network ls
+
+# 12. Inspecionar uma rede específica:
+docker network inspect <network_name>
+
+# 13. Recriar containers com Docker Compose:
+docker-compose up --build
+
+# 14. Reiniciar containers com Docker Compose:
+docker-compose restart
+
+# 15. Verificar o status dos containers do Docker Compose:
+docker-compose ps
+
+# 16. Remover containers e volumes com Docker Compose:
+docker-compose down --volumes
+
+# 17. Subir containers com Docker Compose:
+docker-compose up
+
+# 18. Verificar status de containers Docker Compose (logs em tempo real):
+docker-compose logs -f
+
+# 19. Verificar volumes do Docker:
+docker volume ls
+
+# 20. Remover volumes não utilizados:
+docker volume prune
+
+docker image prune -a
+docker volume prune
