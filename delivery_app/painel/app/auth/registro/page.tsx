@@ -211,45 +211,30 @@ export default function PaginaRegistro() {
     }
 
     return (
+
         <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 relative overflow-hidden">
-            <div className="absolute top-10 left-10 w-16 h-16 bg-red-100/30 rounded-full animate-pulse">
-                <div className="w-full h-full flex items-center justify-center text-2xl">🍽️</div>
-            </div>
-            <div
-                className="absolute top-32 right-16 w-14 h-14 bg-orange-100/30 rounded-full animate-bounce"
-                style={{ animationDelay: "1s" }}
-            >
-                <div className="w-full h-full flex items-center justify-center text-xl">🚚</div>
-            </div>
-            <div
-                className="absolute bottom-20 left-20 w-12 h-12 bg-green-100/30 rounded-full animate-pulse"
-                style={{ animationDelay: "2s" }}
-            >
-                <div className="w-full h-full flex items-center justify-center text-lg">📱</div>
-            </div>
-            <div
-                className="absolute top-1/2 right-8 w-14 h-14 bg-blue-100/30 rounded-full animate-bounce"
-                style={{ animationDelay: "3s" }}
-            >
-                <div className="w-full h-full flex items-center justify-center text-lg">⭐</div>
-            </div>
-
-            <div className="relative z-10 min-h-screen flex flex-col items-center justify-center p-4">
-                <div className="text-center mb-8">
-                    <div className="inline-flex items-center gap-3 mb-4">
-                        <div className="w-14 h-14 bg-gradient-to-br from-red-400 to-orange-400 rounded-2xl flex items-center justify-center shadow-lg">
-                            <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
+            <header className="bg-white border-b border-gray-200">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3"> {/* padding y menor */}
+                    <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-2"> {/* espaço entre itens menor */}
+                            <div className="w-8 h-8 bg-gradient-to-r from-red-400 to-orange-400 rounded-xl flex items-center justify-center">
+                                <Utensils className="w-5 h-5 text-white" /> {/* ícone menor */}
+                            </div>
+                            <div>
+                                <h1 className="text-lg font-bold text-gray-900">Pratto</h1> {/* texto menor */}
+                                <p className="text-xs text-gray-500">Plataforma de Delivery</p>
+                            </div>
                         </div>
-                        <h1 className="text-4xl font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent font-sans">
-                            FoodPartner
-                        </h1>
+                        <div className="text-xs text-gray-600"> {/* texto menor */}
+                            Já tem uma conta?
+                            <a href="/auth/login" className="ml-1 text-gray-600 hover:text-gray-800 font-medium">
+                                Faça o login
+                            </a>
+                        </div>
                     </div>
-                    <p className="text-gray-700 text-lg font-medium">Cadastre seu restaurante e comece a vender</p>
-                    <p className="text-gray-600 text-sm mt-1">Plataforma completa para delivery de alimentos</p>
                 </div>
-
+            </header>
+            <div className="relative z-10 min-h-screen flex flex-col items-center justify-center p-4">
                 <div className="w-full max-w-md mb-8">
                     <div className="flex items-center justify-between mb-2">
                         {[1, 2, 3].map((stepNumber) => (
@@ -283,7 +268,7 @@ export default function PaginaRegistro() {
                 </div>
 
                 <Card className="w-full max-w-lg bg-white shadow-2xl border-0 rounded-2xl overflow-hidden">
-                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-400 to-orange-400"></div>
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r"></div>
 
                     <CardHeader className="text-center pb-6 pt-8 bg-gray-50/50">
                         <CardTitle className="text-3xl font-bold text-gray-800 font-sans">Cadastre seu restaurante</CardTitle>
@@ -795,7 +780,7 @@ export default function PaginaRegistro() {
                                 Já tem uma conta?{" "}
                                 <Link
                                     href="/auth/login"
-                                    className="text-red-600 hover:text-orange-600 font-bold hover:underline transition-all duration-150 hover:scale-[1.01] inline-block"
+                                    className="text-red-400 hover:text-orange-400 font-bold hover:underline transition-all duration-150 hover:scale-[1.01] inline-block"
                                 >
                                     Faça login
                                 </Link>
@@ -803,26 +788,25 @@ export default function PaginaRegistro() {
                         </div>
                     </CardContent>
                 </Card>
-
-                <footer className="mt-12 text-center">
-                    <div className="bg-white/90 backdrop-blur-sm rounded-xl px-8 py-6 shadow-lg border border-gray-200 transition-all duration-200 hover:shadow-xl">
-                        <div className="flex items-center justify-center gap-3 mb-3">
-                            <div className="w-8 h-8 bg-gradient-to-br from-red-400 to-orange-400 rounded-lg flex items-center justify-center transition-transform duration-150 hover:scale-105">
-                                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg>
-                            </div>
-                            <span className="text-xl font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">
-                                FoodPartner
-                            </span>
-                        </div>
-                        <p className="text-gray-600 text-sm font-medium text-center">
-                            Plataforma completa para delivery de alimentos
-                        </p>
-                        <p className="text-gray-500 text-xs mt-2 text-center">© 2024 FoodPartner. Todos os direitos reservados.</p>
-                    </div>
-                </footer>
             </div>
+            <footer className="bg-white border-t border-gray-100 py-3"> {/* padding y menor */}
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center">
+                        <div className="flex items-center justify-center space-x-1 mb-1"> {/* menos espaçamento */}
+                            <div className="w-5 h-5 bg-gradient-to-r from-red-400 to-orange-400 rounded-md flex items-center justify-center">
+                                <Utensils className="w-3 h-3 text-white" />
+                            </div>
+                            <span className="text-gray-600 font-medium text-xs">Pratto</span> {/* texto menor */}
+                        </div>
+                        <div className="flex items-center justify-center space-x-3 text-xs text-gray-500 mb-1">
+                            <a href="#" className="hover:text-gray-700">Termos de Uso</a>
+                            <a href="#" className="hover:text-gray-700">Política de Privacidade</a>
+                            <a href="#" className="hover:text-gray-700">Suporte</a>
+                        </div>
+                        <p className="text-gray-500 text-[10px]">© 2024 Pratto. Todos os direitos reservados.</p>
+                    </div>
+                </div>
+            </footer>
         </div>
     )
 }

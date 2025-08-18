@@ -78,16 +78,16 @@ const PaginaLogin = () => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-gray-50 to-blue-50 flex items-center justify-center">
         <style jsx>{`
-          @keyframes breathe {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-          }
-          .animate-breathe {
-            animation: breathe 2s ease-in-out infinite;
-          }
-        `}</style>
-        <div className="w-24 h-24 bg-gradient-to-r from-red-400 to-orange-400 rounded-full flex items-center justify-center animate-breathe shadow-lg">
-          <Utensils className="w-12 h-12 text-white" />
+        @keyframes breathe {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.1); }
+        }
+        .animate-breathe {
+          animation: breathe 2s ease-in-out infinite;
+        }
+      `}</style>
+        <div className="w-12 h-12 bg-gradient-to-r from-red-400 to-orange-400 rounded-xl flex items-center justify-center animate-breathe shadow-lg">
+          <Utensils className="w-5 h-5 text-white" />
         </div>
       </div>
     )
@@ -96,20 +96,20 @@ const PaginaLogin = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-gray-50 to-blue-50 flex flex-col">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <header className="bg-white border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3"> {/* padding y menor */}
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-red-400 to-orange-400 rounded-xl flex items-center justify-center">
-                <Utensils className="w-6 h-6 text-white" />
+            <div className="flex items-center space-x-2"> {/* espaço entre itens menor */}
+              <div className="w-8 h-8 bg-gradient-to-r from-red-400 to-orange-400 rounded-xl flex items-center justify-center">
+                <Utensils className="w-5 h-5 text-white" /> {/* ícone menor */}
               </div>
               <div>
-                <h1 className="text-xl font-bold text-gray-900">FoodPartner</h1>
+                <h1 className="text-lg font-bold text-gray-900">Pratto</h1> {/* texto menor */}
                 <p className="text-xs text-gray-500">Plataforma de Delivery</p>
               </div>
             </div>
-            <div className="text-sm text-gray-600">
-              Não tem conta?
+            <div className="text-xs text-gray-600"> {/* texto menor */}
+            Não tem conta?
               <a href="/auth/registro" className="ml-1 text-gray-600 hover:text-gray-800 font-medium">
                 Cadastre-se
               </a>
@@ -118,34 +118,35 @@ const PaginaLogin = () => {
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="flex-1 flex items-center justify-center px-4 py-12">
-        <div className="w-full max-w-md">
+
+      <main className="flex-1 flex items-center justify-center px-3 py-6">
+        <div className="w-full max-w-xs">
+
           {/* Login Card */}
-          <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+          <div className="bg-white rounded-lg shadow border border-gray-100 overflow-hidden">
             {/* Card Header */}
-            <div className="bg-gradient-to-r from-red-400 to-orange-400 px-8 py-6 text-center">
-              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Lock className="w-8 h-8 text-white" />
+            <div className="bg-gradient-to-r from-red-400 to-orange-400 px-4 py-3 text-center">
+              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                <Lock className="w-5 h-5 text-white" />
               </div>
-              <h2 className="text-2xl font-bold text-white mb-2">Bem-vindo de volta!</h2>
-              <p className="text-red-50">Acesse sua conta para continuar</p>
+              <h2 className="text-lg font-bold text-white mb-0.5">Bem-vindo!</h2>
+              <p className="text-red-50 text-xs">Acesse sua conta</p>
             </div>
 
             {/* Card Body */}
-            <div className="px-8 py-8">
+            <div className="px-4 py-4 space-y-3">
               {/* Error Message */}
               {errorMessage && (
-                <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center space-x-3">
-                  <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0" />
-                  <p className="text-red-800 text-sm font-medium">{errorMessage}</p>
+                <div className="p-2 bg-red-50 border border-red-200 rounded flex items-center space-x-1 text-xs">
+                  <AlertCircle className="w-3 h-3 text-red-600 flex-shrink-0" />
+                  <p className="text-red-800">{errorMessage}</p>
                 </div>
               )}
 
-              <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
-                {/* Campo de E-mail */}
+              <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
+                {/* E-mail */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">E-mail</label>
+                  <label className="block text-xs font-medium text-gray-700 mb-1">E-mail</label>
                   <Controller
                     name="email"
                     control={control}
@@ -158,24 +159,23 @@ const PaginaLogin = () => {
                     }}
                     render={({ field }) => (
                       <div className="relative">
-                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                          <Mail className="h-5 w-5 text-gray-400" />
+                        <div className="absolute inset-y-0 left-0 pl-1 flex items-center pointer-events-none">
+                          <Mail className="w-3.5 h-3.5 text-gray-400" />
                         </div>
                         <input
                           {...field}
                           type="email"
                           disabled={loading}
                           placeholder="Digite seu e-mail"
-                          className={`
-                            w-full pl-10 pr-4 py-3 border rounded-lg text-gray-900 placeholder-gray-500
-                            focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent
-                            disabled:bg-gray-50 disabled:text-gray-500 disabled:cursor-not-allowed
-                            ${errors.email ? "border-red-300 bg-red-50" : "border-gray-300"}
-                          `}
+                          className={`w-full pl-8 pr-2 py-1.5 border rounded text-gray-900 text-sm placeholder-gray-400
+                      focus:outline-none focus:ring-1 focus:ring-orange-400
+                      disabled:bg-gray-50 disabled:text-gray-500
+                      ${errors.email ? "border-red-300 bg-red-50" : "border-gray-300"}
+                    `}
                         />
                         {errors.email && (
-                          <p className="mt-2 text-sm text-red-600 flex items-center">
-                            <AlertCircle className="w-4 h-4 mr-1" />
+                          <p className="mt-1 text-xs text-red-600 flex items-center">
+                            <AlertCircle className="w-3 h-3 mr-1" />
                             {errors.email.message}
                           </p>
                         )}
@@ -184,45 +184,44 @@ const PaginaLogin = () => {
                   />
                 </div>
 
-                {/* Campo de Senha */}
+                {/* Senha */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Senha</label>
+                  <label className="block text-xs font-medium text-gray-700 mb-1">Senha</label>
                   <Controller
                     name="senha"
                     control={control}
                     rules={{ required: "Senha é obrigatória" }}
                     render={({ field }) => (
                       <div className="relative">
-                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                          <Lock className="h-5 w-5 text-gray-400" />
+                        <div className="absolute inset-y-0 left-0 pl-1 flex items-center pointer-events-none">
+                          <Lock className="w-3.5 h-3.5 text-gray-400" />
                         </div>
                         <input
                           {...field}
                           type={showPassword ? "text" : "password"}
                           disabled={loading}
                           placeholder="Digite sua senha"
-                          className={`
-                            w-full pl-10 pr-12 py-3 border rounded-lg text-gray-900 placeholder-gray-500
-                            focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent
-                            disabled:bg-gray-50 disabled:text-gray-500 disabled:cursor-not-allowed
-                            ${errors.senha ? "border-red-300 bg-red-50" : "border-gray-300"}
-                          `}
+                          className={`w-full pl-8 pr-8 py-1.5 border rounded text-gray-900 text-sm placeholder-gray-400
+                      focus:outline-none focus:ring-1 focus:ring-orange-400
+                      disabled:bg-gray-50 disabled:text-gray-500
+                      ${errors.senha ? "border-red-300 bg-red-50" : "border-gray-300"}
+                    `}
                         />
                         <button
                           type="button"
                           disabled={loading}
                           onClick={() => setShowPassword(!showPassword)}
-                          className="absolute inset-y-0 right-0 pr-3 flex items-center disabled:cursor-not-allowed"
+                          className="absolute inset-y-0 right-0 pr-1 flex items-center disabled:cursor-not-allowed"
                         >
                           {showPassword ? (
-                            <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                            <EyeOff className="w-3.5 h-3.5 text-gray-400 hover:text-gray-600" />
                           ) : (
-                            <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                            <Eye className="w-3.5 h-3.5 text-gray-400 hover:text-gray-600" />
                           )}
                         </button>
                         {errors.senha && (
-                          <p className="mt-2 text-sm text-red-600 flex items-center">
-                            <AlertCircle className="w-4 h-4 mr-1" />
+                          <p className="mt-1 text-xs text-red-600 flex items-center">
+                            <AlertCircle className="w-3 h-3 mr-1" />
                             {errors.senha.message}
                           </p>
                         )}
@@ -231,7 +230,7 @@ const PaginaLogin = () => {
                   />
                 </div>
 
-                {/* Checkbox Lembrar Senha */}
+                {/* Lembrar Senha */}
                 <div className="flex items-center">
                   <Controller
                     name="lembrarSenha"
@@ -244,9 +243,9 @@ const PaginaLogin = () => {
                           checked={value}
                           onChange={onChange}
                           disabled={loading}
-                          className="h-4 w-4 text-orange-500 focus:ring-orange-400 border-gray-300 rounded disabled:cursor-not-allowed"
+                          className="h-3 w-3 text-orange-500 focus:ring-orange-400 border-gray-300 rounded"
                         />
-                        <label className="ml-2 block text-sm text-gray-700">Lembrar-me</label>
+                        <label className="ml-1 text-xs text-gray-700">Lembrar-me</label>
                       </div>
                     )}
                   />
@@ -256,41 +255,29 @@ const PaginaLogin = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className={`
-                    w-full flex items-center justify-center px-8 py-3 h-12 border border-transparent 
-                    text-base font-bold rounded-lg text-white transition-all duration-200
-                    transform hover:scale-[1.01] active:scale-[0.99] shadow-md
-                    focus:outline-none focus:ring-0 focus:border-transparent
-                    ${loading
-                      ? "bg-gray-400 cursor-not-allowed opacity-50 transform-none"
-                      : "bg-gradient-to-r from-red-400 to-orange-400 hover:from-red-450 hover:to-orange-450 hover:shadow-md hover:shadow-orange-100/50"
-                    }
-                  `}
+                  className={`w-full flex items-center justify-center px-4 py-1.5 border border-transparent text-sm font-bold rounded text-white
+              transition-all duration-200 transform hover:scale-[1.01] active:scale-[0.99]
+              ${loading ? "bg-gray-400 cursor-not-allowed opacity-50" : "bg-gradient-to-r from-red-400 to-orange-400 hover:from-red-450 hover:to-orange-450"}
+            `}
                 >
                   {loading ? (
                     <>
-                      <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                      <Loader2 className="w-3.5 h-3.5 mr-1.5 animate-spin" />
                       Entrando...
                     </>
                   ) : (
                     <>
                       Entrar
-                      <ArrowRight className="w-5 h-5 ml-2 transition-transform duration-150 group-hover:translate-x-0.5" />
+                      <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
                     </>
                   )}
                 </button>
 
-                {/* Links Adicionais */}
-                <div className="text-center space-y-2">
-                  <a href="#" className="text-sm text-gray-500 hover:text-gray-700 font-medium">
+                {/* Links */}
+                <div className="text-center space-y-1">
+                  <a href="#" className="text-gray-600 hover:text-gray-800 text-xs font-medium">
                     Esqueceu sua senha?
                   </a>
-                  <div className="text-sm text-gray-600">
-                    Não tem uma conta?{" "}
-                    <a href="/auth/registro" className="text-gray-600 hover:text-gray-800 font-medium">
-                      Cadastre-se gratuitamente
-                    </a>
-                  </div>
                 </div>
               </form>
             </div>
@@ -298,29 +285,23 @@ const PaginaLogin = () => {
         </div>
       </main>
 
+
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-100 py-8">
+      <footer className="bg-white border-t border-gray-100 py-3"> {/* padding y menor */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="flex items-center justify-center space-x-3 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-red-400 to-orange-400 rounded-lg flex items-center justify-center">
-                <Utensils className="w-4 h-4 text-white" />
+            <div className="flex items-center justify-center space-x-1 mb-1"> {/* menos espaçamento */}
+              <div className="w-5 h-5 bg-gradient-to-r from-red-400 to-orange-400 rounded-md flex items-center justify-center">
+                <Utensils className="w-3 h-3 text-white" />
               </div>
-              <span className="text-gray-600 font-medium">FoodPartner</span>
+              <span className="text-gray-600 font-medium text-xs">Pratto</span> {/* texto menor */}
             </div>
-            <p className="text-gray-600 text-sm font-medium mb-2">Plataforma completa para delivery de alimentos</p>
-            <div className="flex items-center justify-center space-x-6 text-sm text-gray-500 mb-2">
-              <a href="#" className="hover:text-gray-700">
-                Termos de Uso
-              </a>
-              <a href="#" className="hover:text-gray-700">
-                Política de Privacidade
-              </a>
-              <a href="#" className="hover:text-gray-700">
-                Suporte
-              </a>
+            <div className="flex items-center justify-center space-x-3 text-xs text-gray-500 mb-1">
+              <a href="#" className="hover:text-gray-700">Termos de Uso</a>
+              <a href="#" className="hover:text-gray-700">Política de Privacidade</a>
+              <a href="#" className="hover:text-gray-700">Suporte</a>
             </div>
-            <p className="text-gray-500 text-xs">© 2024 FoodPartner. Todos os direitos reservados.</p>
+            <p className="text-gray-500 text-[10px]">© 2024 Pratto. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>
