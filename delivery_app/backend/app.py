@@ -1,5 +1,5 @@
 # app.py
-from flask import Flask, g, jsonify, Response, request
+from flask import Flask, g, jsonify, Response, request, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_cors import CORS
@@ -11,12 +11,16 @@ from flask_jwt_extended import JWTManager
 from extensions import db, redis
 from decorators.jwt_required_custom import jwt_required_custom
 from decorators.tenant_required import tenant_required
+import os
 
 # Importar os Blueprints
 from blueprints.cardapio_routes import cardapio_api
 from blueprints.painel_routes import painel_api
 from blueprints.logs_routes import log_api
 from blueprints.auth_routes import auth_api
+
+UPLOAD_FOLDER = os.path.join(os.getcwd(), "uploads/logos")
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 load_dotenv()
 
@@ -77,3 +81,8 @@ def test_db_connection():
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")
+
+# Rota para servir as imagens
+@app.route('/uploads/logos/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(UPLOAD_FOLDER, filename)

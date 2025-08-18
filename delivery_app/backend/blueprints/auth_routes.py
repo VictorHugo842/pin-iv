@@ -46,15 +46,14 @@ def get_tenant():
                 "id": tenant.id,
                 "slug": tenant.slug,
                 "estabelecimento_id": estabelecimento.id,
-                "estabelecimento_nome": estabelecimento.nome,  # O nome que vai para a pasta
+                "estabelecimento_nome": estabelecimento.nome,  # nome que vai para a pasta
+                "logo_path": tenant.logo_path 
             })
-        else:
-            # Se quiser ignorar tenants sem estabelecimento válido
-            pass
 
     if not tenant_list:
         return jsonify({"msg": "Nenhum tenant com estabelecimento válido encontrado."}), 404
-    print(tenant_list)
+
+    print(tenant_list)  # para debug no backend
     return jsonify({"msg": "Escolha um tenant", "tenants": tenant_list}), 200
 
 

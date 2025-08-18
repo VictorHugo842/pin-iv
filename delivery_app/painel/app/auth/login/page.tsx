@@ -78,17 +78,26 @@ const PaginaLogin = () => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-gray-50 to-blue-50 flex items-center justify-center">
         <style jsx>{`
-        @keyframes breathe {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.1); }
-        }
-        .animate-breathe {
-          animation: breathe 2s ease-in-out infinite;
-        }
-      `}</style>
-        <div className="w-12 h-12 bg-gradient-to-r from-red-400 to-orange-400 rounded-xl flex items-center justify-center animate-breathe shadow-lg">
-          <Utensils className="w-5 h-5 text-white" />
+                    @keyframes breathe {
+                        0%, 100% { transform: scale(1); }
+                        50% { transform: scale(1.2); } /* Aumenta a escala para ficar mais visível */
+                    }
+                    .animate-breathe {
+                        animation: breathe 1.2s ease-in-out infinite; /* Aumenta duração */
+                    }
+                `}</style>
+        <div className="w-24 h-24 bg-gradient-to-r from-red-400 to-orange-400 rounded-xl flex items-center justify-center animate-breathe shadow-lg">
+          <Utensils className="w-10 h-10 text-white" />
         </div>
+      </div>
+    )
+  }
+
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center p-8 bg-gray-50">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-red-500"></div>
       </div>
     )
   }
@@ -109,7 +118,7 @@ const PaginaLogin = () => {
               </div>
             </div>
             <div className="text-xs text-gray-600"> {/* texto menor */}
-            Não tem conta?
+              Não tem conta?
               <a href="/auth/registro" className="ml-1 text-gray-600 hover:text-gray-800 font-medium">
                 Cadastre-se
               </a>
@@ -256,15 +265,12 @@ const PaginaLogin = () => {
                   type="submit"
                   disabled={loading}
                   className={`w-full flex items-center justify-center px-4 py-1.5 border border-transparent text-sm font-bold rounded text-white
-              transition-all duration-200 transform hover:scale-[1.01] active:scale-[0.99]
-              ${loading ? "bg-gray-400 cursor-not-allowed opacity-50" : "bg-gradient-to-r from-red-400 to-orange-400 hover:from-red-450 hover:to-orange-450"}
-            `}
+                  transition-all duration-200 transform hover:scale-[1.01] active:scale-[0.99]
+                  ${loading ? "cursor-not-allowed bg-gray-400 opacity-50" : "bg-gradient-to-r from-red-400 to-orange-400 hover:from-red-450 hover:to-orange-450"}
+                `}
                 >
                   {loading ? (
-                    <>
-                      <Loader2 className="w-3.5 h-3.5 mr-1.5 animate-spin" />
-                      Entrando...
-                    </>
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-red-500"></div>
                   ) : (
                     <>
                       Entrar
@@ -272,6 +278,7 @@ const PaginaLogin = () => {
                     </>
                   )}
                 </button>
+
 
                 {/* Links */}
                 <div className="text-center space-y-1">

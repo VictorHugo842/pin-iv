@@ -185,18 +185,18 @@ export default function PaginaRegistro() {
 
     if (showSuccessLoading) {
         return (
-            <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+            <div className="min-h-screen bg-gradient-to-br from-slate-50 via-gray-50 to-blue-50 flex items-center justify-center">
                 <style jsx>{`
-          @keyframes breathe {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-          }
-          .animate-breathe {
-            animation: breathe 2s ease-in-out infinite;
-          }
-        `}</style>
-                <div className="w-24 h-24 bg-gradient-to-r from-red-400 to-orange-400 rounded-full flex items-center justify-center animate-breathe shadow-lg">
-                    <Utensils className="w-12 h-12 text-white" />
+                        @keyframes breathe {
+                            0%, 100% { transform: scale(1); }
+                            50% { transform: scale(1.2); } /* Aumenta a escala para ficar mais visível */
+                        }
+                        .animate-breathe {
+                            animation: breathe 1.2s ease-in-out infinite; /* Aumenta duração */
+                        }
+                    `}</style>
+                <div className="w-24 h-24 bg-gradient-to-r from-red-400 to-orange-400 rounded-xl flex items-center justify-center animate-breathe shadow-lg">
+                    <Utensils className="w-10 h-10 text-white" />
                 </div>
             </div>
         )

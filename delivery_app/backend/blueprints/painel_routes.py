@@ -181,7 +181,7 @@ def registrar_usuario():
             logo_path = None
 
             if logo_file:
-                filename = secure_filename(logo_file.filename)
+                filename = secure_filename(logo_file.filename.replace(" ", "_"))
                 timestamp = int(datetime.now().timestamp())
                 filename = f"{slug_tenant}_{timestamp}_{filename}"
 
@@ -189,13 +189,13 @@ def registrar_usuario():
                 logo_file.save(full_path)
 
                 # Salva o caminho relativo para o banco (exemplo: 'uploads/logos/arquivo.png')
-                logo_path = full_path
+                logo_path = f"uploads/logos/{filename}"  
 
             tenant = Tenant(
                 estabelecimento_id=estabelecimento.id,
                 usuario_id=usuario.id,
                 slug=slug_tenant,
-                logo_path=logo_path  # caminho do arquivo no banco
+                logo_path=logo_path
             )
             db.session.add(tenant)
             tenants.append(tenant)
